@@ -11,7 +11,7 @@ class NoteListView(ListView):
 	context_object_name = "notes" #para que no se llame object_list
 
 	def get_queryset(self):
-		queryset = Note.objects.filter(user = request.user.id)
+		queryset = Note.objects.filter(user = self.request.user.id)
 
 class NoteDetailView(DetailView):
 	model = Note
