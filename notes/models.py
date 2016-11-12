@@ -1,7 +1,9 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 class Note(models.Model):
+    user = models.ForeignKey(User, related_name='this_guy_forgets_stuff')
     note = models.CharField(max_length=280)
     created = models.DateTimeField(auto_now_add=True)
     PRIORIDAD = (
