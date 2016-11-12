@@ -11,7 +11,7 @@ class Note(models.Model):
         )
     priority = models.CharField(choices=PRIORIDAD, default='Baja', max_length=5)
     has_alarm = models.BooleanField(default=False)
-    father_note = models.ForeignKey('self', related_name='nota_padre', blank=True)
+    father_note = models.ForeignKey('self', related_name='nota_padre', blank=True, null=True)
     due_date = models.DateTimeField()
     completed = models.BooleanField(default=False)
     image = models.ImageField(null=False, blank=True)
