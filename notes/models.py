@@ -1,4 +1,4 @@
-models.py
+from django.db import models
 from datetime import datetime
 
 class Note(models.Model):
@@ -10,7 +10,7 @@ class Note(models.Model):
         ('3', 'Baja'),
         )
     priority = models.IntegerField(choices=PRIORIDAD, default='Baja')
-    has_alarm = models.BoleanField(default=False)
+    has_alarm = models.BooleanField(default=False)
     father_note = models.ForeignKey('self', related_name='nota_padre')
     due_date = models.DateTimeField()
     completed = models.BooleanField(default=False)

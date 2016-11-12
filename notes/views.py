@@ -1,11 +1,8 @@
-<<<<<<< HEAD
+
 from django.shortcuts import render
 from django.views.generic import ListView
 from .models import Note
-# Create your views here.
 
-
-=======
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 from .models import *
 
@@ -25,7 +22,7 @@ class NoteUpdateView(UpdateView):
 	fields = []
 	success_url = "/notes/list"
 
-class NoteCreateView():
+class NoteCreateView(CreateView):
 	model = Note
 	fields = []
 	success_url = "/notes/list"
