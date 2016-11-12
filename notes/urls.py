@@ -14,6 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from .views import *
 
 urlpatterns = [
+	url(r'^list/', NoteListView.as_view(), name="list-notes"),
+    url(r'^create/', NoteCreateView.as_view(), name="create-note"),
+    url(r'^detail/(?P<pk>[0-9]+)/', NoteDetailView.as_view(), name="detail-note"),
+    url(r'^delete/(?P<pk>[0-9]+)/', NoteDeleteView.as_view(), name="delete-note"),
+    url(r'^update/(?P<pk>[0-9]+)/', NoteUpdateView.as_view(), name="update-note"),
 ]
