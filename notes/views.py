@@ -4,14 +4,13 @@ from django.views.generic import View, ListView, DetailView, DeleteView, CreateV
 from .functions import authenticated
 from .models import *
 
-
 ##Como pedir usuario autenticado en generic views?
 class NoteListView(ListView):
 	model = Note
 	context_object_name = "notes" #para que no se llame object_list
 
 	def get_queryset(self):
-        queryset = Note.objects.filter(user = request.user.id)
+		queryset = Note.objects.filter(user = request.user.id)
 
 class NoteDetailView(DetailView):
 	model = Note
