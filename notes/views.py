@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import View, ListView, DetailView, DeleteView, CreateView, UpdateView
 from .functions import authenticated
 from .models import *
+from .forms import *
 
 ##Como pedir usuario autenticado en generic views?
 class NoteListView(ListView):
