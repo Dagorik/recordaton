@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.views.generic import View, ListView, DetailView, DeleteView, CreateView, UpdateView
 from .models import *
-
+from .forms import *
 class NoteListView(ListView):
 	model = Note
 	context_object_name = "notes" #para que no se llame object_list

@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-
+from django.contrib.auth.views import login
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^notes/', include("notes.urls")),
+    url(r'accounts/login/', login, {'template_name':'index.html'}, name = 'login' )
 ]

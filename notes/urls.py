@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from .views import *
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-	url(r'^list/', NoteListView.as_view(), name="list-notes"),
-    url(r'^create/', NoteCreateView.as_view(), name="create-note"),
-    url(r'^detail/(?P<pk>[0-9]+)/', NoteDetailView.as_view(), name="detail-note"),
-    url(r'^delete/(?P<pk>[0-9]+)/', NoteDeleteView.as_view(), name="delete-note"),
-    url(r'^update/(?P<pk>[0-9]+)/', NoteUpdateView.as_view(), name="update-note"),
+	url(r'^list/', login_required(NoteListView.as_view()), name="list-notes"),
+    url(r'^create/', login_required(NoteCreateView.as_view()), name="create-note"),
+    url(r'^detail/(?P<pk>[0-9]+)/', login_required(NoteDetailView.as_view()), name="detail-note"),
+    url(r'^delete/(?P<pk>[0-9]+)/', login_required(NoteDeleteView.as_view()), name="delete-note"),
+    url(r'^update/(?P<pk>[0-9]+)/', login_required(NoteUpdateView.as_view()), name="update-note"),
+    
 ]
