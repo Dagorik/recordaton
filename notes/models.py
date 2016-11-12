@@ -1,3 +1,21 @@
-from django.db import models
+models.py
+from datetime import datetime
 
-# Create your models here.
+class Note(models.Model):
+    note = models.CharField(max_length=280)
+    created = models.DateTimeField(auto_now_add=True)
+    PRIORIDAD = (
+        ('1', 'Alta'),
+        ('2', 'Media'),
+        ('3', 'Baja'),
+        )
+    priority = models.IntegerField(choices=PRIORIDAD, default='Baja')
+    has_alarm = models.BoleanField(default=False)
+    father_note = models.ForeignKey('self', related_name='nota_padre')
+    due_date = models.DateTimeField()
+    completed = models.BooleanField(default=False)
+    image = models.ImageField()
+
+class Reminder(models.Model):
+    note = models.ForeignKey(Note)
+    reminder_time =  models.DateTimeField()
